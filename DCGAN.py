@@ -314,25 +314,6 @@ D.apply(weights_init)
 print("ネットワークの初期化完了")
 
 
-'''ネットワークの初期化'''
-
-def weights_init(m):
-    classname = m.__class__.__name__
-    if classname.find('Conv') != -1:
-        # Conv2dとConvTranspose2dの初期化
-        nn.init.normal_(m.weight.data, 0.0, 0.02)
-        nn.init.constant_(m.bias.data, 0)
-    elif classname.find('BatchNorm') != -1:
-        # BatchNorm2dの初期化
-        nn.init.normal_(m.weight.data, 1.0, 0.02)
-        nn.init.constant_(m.bias.data, 0)
-
-
-# 初期化の実施
-G.apply(weights_init)
-D.apply(weights_init)
-
-
 '''損失関数と最適化関数の定義'''
 
 # 誤差関数を定義
